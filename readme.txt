@@ -11,7 +11,7 @@ This plugin was built by the Maine WordPress Meetup group to make it really easy
 
 This plugin was built by the Maine WordPress Meetup group to make it really easy to add social network icons to your posts.
 
-This plugin supports the following social networks:
+### This plugin supports the following social networks:
 
 * Facebook
 * Twitter

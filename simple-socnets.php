@@ -4,12 +4,12 @@ Plugin Name: Simple Socnets
 Plugin URI: http://wordpress.org/extend/plugins/simple-socnets/
 Description: This plugin was built by the Maine WordPress Meetup group to make it really easy to add social network icons to your posts.
 Author: Maine WordPress Meetup Group
-Version: 1.0
+Version: 1.0.1
 Author URI: http://www.meetup.com/Southern-Maine-WordPress-Meetup/
 */
 
 
-function socnet_get_the_links() {
+function socnet_get_the_links($all = false) {
 	/*
 		TODO Make this dynamic, allow for front-end updating
 	*/
@@ -22,9 +22,30 @@ function socnet_get_the_links() {
 	$output['linkedin']['url'] = 'http://www.linkedin.com/shareArticle?mini=true&url={url}&amp;title={title}';
 	$output['linkedin']['name'] = 'LinkedIn';
 	
+	$output['stumbleupon'] = array(
+		'url' => 'http://www.stumbleupon.com/submit?url={url}&amp;title={title}',
+		'name' => ''
+	);
+	$output['delicious'] = array(
+		'url' => 'http://del.icio.us/post?url={url}&title={title}',
+		'name' => 'Delicious'
+	);
+	$output['digg'] = array(
+		'url' => 'http://digg.com/submit?url={url}&title={title}',
+		'name' => 'Digg'
+	);
+	$output['reddit'] = array(
+		'url' => 'http://reddit.com/submit?url={url}&title={title}',
+		'name' => 'Reddit'
+	);
+	$output['designfloat'] = array(
+		'url' => 'http://www.designfloat.com/submit.php?url={url}&title={title}',
+		'name' => 'Designfloat'
+	);
+	
 	$settings = get_option('socnet_settings');
 	
-	if(is_array($output)) :  foreach($output as $network => $junk) :
+	if(is_array($output) && !$all) :  foreach($output as $network => $junk) :
 		if(!isset($settings['networks'][$network])) {
 			unset($output[$network]);
 		}
@@ -119,7 +140,7 @@ function socnet_global_settings_page() {
 	<th scope="row">Networks</th>
 	<td>
 		<?php
-		$options = socnet_get_the_links();
+		$options = socnet_get_the_links(true);
 		?>
 		<ul>
 		<?php if(is_array($options)) :  foreach($options as $network => $meta) : ?>

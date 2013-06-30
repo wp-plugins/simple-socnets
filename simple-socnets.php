@@ -4,7 +4,7 @@ Plugin Name: Simple Socnets
 Plugin URI: http://wordpress.org/extend/plugins/simple-socnets/
 Description: This plugin was built by the Maine WordPress Meetup group to make it really easy to add social network icons to your posts.
 Author: Maine WordPress Meetup Group
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://www.meetup.com/Southern-Maine-WordPress-Meetup/
 */
 
@@ -24,7 +24,7 @@ function socnet_get_the_links($all = false) {
 	
 	$output['stumbleupon'] = array(
 		'url' => 'http://www.stumbleupon.com/submit?url={url}&amp;title={title}',
-		'name' => ''
+		'name' => 'Stumbleupon'
 	);
 	$output['delicious'] = array(
 		'url' => 'http://del.icio.us/post?url={url}&title={title}',
